@@ -1,8 +1,8 @@
-drop table if exists usr;
+drop table if exists complient;
+drop table if exists resident;
 drop table if exists room;
 drop table if exists hostel;
-drop table if exists residents;
-drop table if exists complients;
+drop table if exists usr;
 
 CREATE TABLE usr(
     id VARCHAR(20) PRIMARY KEY,
