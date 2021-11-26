@@ -62,9 +62,13 @@ def signin():
                         return redirect("/signin")
                     else:
                         print("user")
-                        return redirect("/signin")
+                        return redirect("/user")
             else:
                 flash('Password not correct.', category='error')
                 return redirect(url_for('auth.signin'))
         cur.close()
     return render_template("login.html")
+
+@auth.route("/user")
+def user():
+    return render_template("student.html")
