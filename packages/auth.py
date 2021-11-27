@@ -62,13 +62,33 @@ def signin():
                         return redirect("/signin")
                     else:
                         print("user")
-                        return redirect("/user")
+                        return redirect(url_for("auth.user", user=userid))
             else:
                 flash('Password not correct.', category='error')
                 return redirect(url_for('auth.signin'))
         cur.close()
     return render_template("login.html")
 
-@auth.route("/user")
-def user():
-    return render_template("student.html")
+@auth.route("/<user>", methods=['GET', 'POST'])
+def user(user):
+    if request.method == "GET":
+        ret = [user,0,0,0]
+        conn = db.get_db()
+        cur = conn.cursor()
+        cur.execute(
+            "select (rid) from resident where sid = %s", (user,)
+        )
+        roomnum = cur.fetchall()
+        if roomnum:
+            room = False
+            ret[1] = roomnum[0][0]
+            cur.execute(
+                "select (hid) from room where id = %s", (roomnum[0],)
+            )
+            hosnum = cur.fetchall()
+            ret[2] = hosnum[0][0]
+            ret[3] = roomnum[0][0][1]
+        else:
+            room = True
+        return render_template("student.html",room=room,ret=ret)
+    

@@ -45,10 +45,10 @@ In-Demand Professions, ​Top ten most popular courses for international student
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Home.html" style="padding: 10px 20px;">Home</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/" style="padding: 10px 20px;">Home</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/signin" style="padding: 10px 20px;">Signin</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/signup" style="padding: 10px 20px;">Signup</a>
-</li><li class="u-nav-item"><a class="btn u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#sec-e2f3" data-page-id="8703540" style="padding: 10px 20px;" >Room</a>
+</li><li class="u-nav-item"><a class={% if room %}"btn u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" {% else %} "btn disabled u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" {% endif %} href="#sec-e2f3" data-page-id="8703540" style="padding: 10px 20px;" >Room</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#carousel_bece" data-page-id="8703540" style="padding: 10px 20px;">Complaint</a>
 </li></ul>
           </div>
@@ -56,7 +56,7 @@ In-Demand Professions, ​Top ten most popular courses for international student
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html" style="padding: 10px 20px;">Home</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/" style="padding: 10px 20px;">Home</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Signin.html" style="padding: 10px 20px;">Signin</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Signup.html" style="padding: 10px 20px;">Signup</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="#sec-e2f3" data-page-id="8703540" style="padding: 10px 20px;">Room</a>
@@ -68,14 +68,14 @@ In-Demand Professions, ​Top ten most popular courses for international student
           </div>
         </nav>
       </div></header>
-    <section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="1280" data-image-height="720" id="sec-115c">
+    <section style="margin-bottom: 40px;" class="disabled u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="1280" data-image-height="720" id="sec-115c">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h1 class="u-text u-text-default u-title u-text-1"> Welcome to NITC&nbsp;<br>
         </h1>
         <h6 class="u-text u-text-default u-text-2">Scroll down to request a&nbsp; room /Lodge a complaint&nbsp;</h6>
       </div>
     </section>
-    <section class="u-clearfix u-section-2" id="sec-e2f3">
+    <div style={% if not room %}"display: none;"{%endif%}><section class="u-clearfix u-section-2" id="sec-e2f3">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">
@@ -143,7 +143,28 @@ In-Demand Professions, ​Top ten most popular courses for international student
           </div>
         </div>
       </div>
-    </section>
+    </section></div>
+    <h1 style={% if room %}"display: none;"{%endif%} >Room Details</h1>
+    <div style={% if room %}"display: none;"{%endif%}  >
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Student Id</th>
+            <th scope="col">Room Number</th>
+            <th scope="col">Hostel Id</th>
+            <th scope="col">Floor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ret[0]}}</th>
+            <td>{{ret[1]}}</td>
+            <td>{{ret[2]}}</td>
+            <td>{{ret[3]}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <section class="u-clearfix u-section-3" id="carousel_bece">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
@@ -237,7 +258,7 @@ In-Demand Professions, ​Top ten most popular courses for international student
       </p>
       <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
         <span>HTML Builder</span>
-      </a>. 
+      </a> 
     </section>
   </body>
 </html>
