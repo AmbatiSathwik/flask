@@ -44,7 +44,7 @@ def signin():
         cur = conn.cursor()
         userid = request.form.get('usrid')
         password = request.form.get('pass')
-        print(password)
+        #print(password)
         cur.execute(
             "select (password) from usr where id = %s", (userid,))
         passi = cur.fetchall()
@@ -58,10 +58,10 @@ def signin():
                 adm = cur.fetchall()
                 for a in adm:
                     if a[0]:
-                        print("admin")
-                        return redirect("/signin")
+                        #print("admin")
+                        return redirect("/signin") #admin page
                     else:
-                        print("user")
+                        #("user")
                         return redirect(url_for("auth.user", user=userid))
             else:
                 flash('Password not correct.', category='error')
@@ -90,5 +90,39 @@ def user(user):
             ret[3] = roomnum[0][0][1]
         else:
             room = True
+        cur.close()
         return render_template("student.html",room=room,ret=ret)
+    if request.method == "POST":
+        check = request.form.get("rname")
+        if check:
+            #request room
+            name = request.form.get("rname")
+            sid = request.form.get("rroll")
+            conn = db.get_db()
+            cur = conn.cursor()
+            cur.execute(
+                'insert into complient(Ctype,description,sid) values (%s,%s,%s)', ("room",name,sid)
+            )
+            conn.commit()
+            cur.close()
+            flash('Room Request registered successfully.', category='success')
+            return redirect(url_for("auth.user", user=user))
+        else:
+            #complaint
+            rid = request.form.get("rid")
+            name = request.form.get("cname")
+            sid = request.form.get("croll")
+            hid = rid[0]
+            typ = request.form.get("select")
+            des = request.form.get("message")
+            conn = db.get_db()
+            cur = conn.cursor()
+            cur.execute(
+                'insert into complient(Ctype,description,sid,rid,hid) values (%s,%s,%s,%s,%s)', (typ,des,sid,rid,hid)
+            )
+            conn.commit()
+            cur.close()
+            flash('Complaint registered successfully.', category='success')
+            return redirect(url_for("auth.user", user=user))
+        return redirect(f"/{user}")
     

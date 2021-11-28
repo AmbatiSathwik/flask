@@ -11,7 +11,7 @@ In-Demand Professions, ​Top ten most popular courses for international student
     <link rel="stylesheet" href="{{ url_for('static',filename='niceapp.css') }}" media="screen">
 <link rel="stylesheet" href="{{ url_for('static',filename='Room.css') }}" media="screen">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script class="u-script" type="text/javascript" src="{{ url_for('static',filename='jquery.js') }}" defer=""></script>
+    <!-- <script class="u-script" type="text/javascript" src="{{ url_for('static',filename='jquery.js') }}" defer=""></script> -->
     <script class="u-script" type="text/javascript" src="{{ url_for('static',filename='niceapp.js') }}" defer=""></script>
     <meta name="generator" content="Nicepage 4.0.3, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
@@ -75,6 +75,27 @@ In-Demand Professions, ​Top ten most popular courses for international student
         <h6 class="u-text u-text-default u-text-2">Scroll down to request a&nbsp; room /Lodge a complaint&nbsp;</h6>
       </div>
     </section>
+    <div style="margin-top: 100px">
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if
+            messages %} {% for category,message in messages %} {% if category ==
+            'error' %}
+            <div
+              role="alert"
+              class="alert alert-danger alert-dismiss"
+              style="margin-top: 100px"
+            >
+              {{ message }}
+            </div>
+            {% else %}
+            <div
+              role="alert"
+              class="alert alert-success alert-dismiss"
+              style="margin-top: 100px"
+            >
+              {{ message }}
+            </div>
+            {% endif %} {% endfor %} {% endif %} {% endwith %}
+          </div>
     <div style={% if not room %}"display: none;"{%endif%}><section class="u-clearfix u-section-2" id="sec-e2f3">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
@@ -87,14 +108,14 @@ In-Demand Professions, ​Top ten most popular courses for international student
                 <div class="u-container-layout u-valign-top u-container-layout-2">
                   <h2 class="u-custom-font u-text u-text-1">Request Room&nbsp;</h2>
                   <div class="u-expanded-width-sm u-expanded-width-xs u-form u-form-1">
-                    <form action="#" method="POST" class="u-clearfix u-form-spacing-40 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 40px;">
+                    <form method="POST" class="form-signin u-clearfix u-form-spacing-40 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 40px;">
                       <div class="u-form-group u-form-name u-form-group-1">
                         <label for="name-e0f0" class="u-form-control-hidden u-label"></label>
-                        <input type="text" placeholder="Name" id="name-e0f0" name="name" class="u-input u-input-rectangle u-white" required="">
+                        <input type="text" placeholder="Name" id="name-e0f0" name="rname" class="u-input u-input-rectangle u-white" required="">
                       </div>
                       <div class="u-form-group u-form-group-2">
                         <label for="email-e0f0" class="u-form-control-hidden u-label"></label>
-                        <input type="text" placeholder="RollNo" id="email-e0f0" name="email" class="u-input u-input-rectangle u-white" required="required">
+                        <input type="text" placeholder="RollNo" id="email-e0f0" name="rroll" class="u-input u-input-rectangle u-white" required="required">
                       </div>
                       <div class="u-form-group u-form-select u-form-group-3">
                         <label for="select-c296" class="u-label">Programme</label>
@@ -129,11 +150,10 @@ In-Demand Professions, ​Top ten most popular courses for international student
                         </div>
                       </div>
                       <div class="u-align-left u-form-group u-form-submit u-form-group-5">
-                        <a href="#" class="u-active-palette-5-light-3 u-border-none u-btn u-btn-submit u-button-style u-hover-palette-3-light-3 u-text-active-palette-2-base u-text-hover-black u-btn-1">Submit</a>
-                        <input type="submit" value="submit" class="u-form-control-hidden">
+                        <button type="submit" class="btn btn-primary">Register</button>
                       </div>
-                      <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-                      <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+                      <!-- <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+                      <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div> -->
                       <input type="hidden" value="" name="recaptchaResponse">
                     </form>
                   </div>
@@ -176,15 +196,15 @@ In-Demand Professions, ​Top ten most popular courses for international student
                     <form action="#" method="POST" class="u-clearfix u-form-spacing-22 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 33px;">
                       <div class="u-form-group u-form-group-1">
                         <label for="text-69c9" class="u-form-control-hidden u-label"></label>
-                        <input type="text" placeholder="Room No" id="text-69c9" name="text" class="u-input u-input-rectangle u-white">
+                        <input type="text" placeholder="Room No" id="text-69c9" name="rid" class="u-input u-input-rectangle u-white">
                       </div>
                       <div class="u-form-group u-form-name u-form-group-2">
                         <label for="name-e0f0" class="u-form-control-hidden u-label"></label>
-                        <input type="text" placeholder="Name" id="name-e0f0" name="name" class="u-input u-input-rectangle u-white" required="">
+                        <input type="text" placeholder="Name" id="name-e0f0" name="cname" class="u-input u-input-rectangle u-white" required="">
                       </div>
                       <div class="u-form-group u-form-group-3">
                         <label for="email-e0f0" class="u-form-control-hidden u-label"></label>
-                        <input type="text" placeholder="RollNo" id="email-e0f0" name="email" class="u-input u-input-rectangle u-white" required="required">
+                        <input type="text" placeholder="RollNo" id="email-e0f0" name="croll" class="u-input u-input-rectangle u-white" required="required">
                       </div>
                       <div class="u-form-group u-form-select u-form-group-4">
                         <label for="select-c296" class="u-label">Complaint Type </label>
@@ -206,11 +226,10 @@ In-Demand Professions, ​Top ten most popular courses for international student
                         <textarea placeholder="Please specify your complaint " rows="4" cols="50" id="message-e0f0" name="message" class="u-input u-input-rectangle u-white" required=""></textarea>
                       </div>
                       <div class="u-align-left u-form-group u-form-submit u-form-group-6">
-                        <a href="#" class="u-active-palette-5-light-3 u-border-none u-btn u-btn-submit u-button-style u-hover-palette-3-light-3 u-text-active-palette-2-base u-text-hover-black u-btn-1">Submit</a>
-                        <input type="submit" value="submit" class="u-form-control-hidden">
+                        <button type="submit" class="btn btn-primary">Register</button>
                       </div>
-                      <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-                      <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+                      <!-- <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+                      <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div> -->
                       <input type="hidden" value="" name="recaptchaResponse">
                     </form>
                   </div>
