@@ -59,7 +59,7 @@ def signin():
                 for a in adm:
                     if a[0]:
                         #print("admin")
-                        return redirect("/signin") #admin page
+                        return redirect("/admin") #admin page
                     else:
                         #("user")
                         return redirect(url_for("auth.user", user=userid))
@@ -125,4 +125,38 @@ def user(user):
             flash('Complaint registered successfully.', category='success')
             return redirect(url_for("auth.user", user=user))
         return redirect(f"/{user}")
+
+@auth.route("/admin")
+def admin():
+    room_det = []
+    conn = db.get_db()
+    cur = conn.cursor()
+    cur.execute(
+        'select (description,sid) from complient where Ctype = %s', ("room",)
+    )
+    room = cur.fetchall()
+    for r in room:
+        det = [None,None]
+        name,sid = r[0].split(",")
+        det[0] = name[1:]
+        det[1] = sid[:-1]
+        room_det.append(det)
+        
+    compliants = []
+    cur.execute(
+        'select (Ctype,description,rid,hid) from complient where Ctype != %s', ("room",)
+    )
+    com = cur.fetchall()
+    for c in com:
+        comp = [None,None,None,None]
+        Ctype,description,rid,hid = c[0].split(",")
+        comp[0] = Ctype[2:-1]
+        comp[1] = description[1:-1]
+        comp[2] = rid
+        comp[3] = hid[:-1]
+        compliants.append(comp)
+    print(compliants)
+    return render_template("admin.html",room_det=room_det,compliants=compliants)
+
     
+
