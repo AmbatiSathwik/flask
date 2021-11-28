@@ -49,7 +49,7 @@
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#carousel_aba4" data-page-id="8703540" style="padding: 10px 20px;">Requests</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#sec-608b" data-page-id="8703540" style="padding: 10px 20px;">Complaint</a>
 <!-- </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Admin.html" style="padding: 10px 20px;">Admin</a> -->
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#sec-3ff3" style="padding: 10px 20px;">Room-Details</a>
+<!-- </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#sec-3ff3" style="padding: 10px 20px;">Room-Details</a> -->
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -89,16 +89,16 @@
             <div class="u-align-center u-blog-post u-border-1 u-border-grey-25 u-container-style u-repeater-item u-video-cover u-white u-repeater-item-1">
               
                 <div class="u-container-layout u-similar-container u-container-layout-1">
-                <a class="u-post-header-link" href="blog/karthik-b190531cs-1.html"><!--blog_post_image-->
+                
                   <img alt="" class="u-blog-control u-image u-image-default u-image-1" src="{{ url_for('static',filename='images/room.jpg') }}" data-image-width="1235" data-image-height="618" data-animation-name="slideIn" data-animation-duration="1000" data-animation-direction="Left"><!--/blog_post_image-->
-                </a><!--blog_post_header-->
+                
                 <h2 class="u-blog-control u-text u-text-default u-text-2">
-                  <a class="u-post-header-link" href="blog/karthik-b190531cs-1.html"><!--blog_post_header_content-->{{r[0]}} - {{r[1]}}<!--/blog_post_header_content--></a>
+                  {{r[0]}} - {{r[1]}}
                 </h2><!--/blog_post_header-->
-                <a href="https://nicepage.com/html-templates" class="u-btn u-btn-round u-button-style u-gradient u-hover-palette-1-base u-none u-radius-50 u-text-body-alt-color u-text-hover-palette-3-base u-btn-1"><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><circle cx="245.333" cy="160" r="74.667"></circle><circle cx="394.667" cy="224" r="53.333"></circle><circle cx="97.515" cy="224" r="53.333"></circle><path d="M245.333,256c-76.459,0-138.667,62.208-138.667,138.667c0,5.888,4.779,10.667,10.667,10.667h256    c5.888,0,10.667-4.779,10.667-10.667C384,318.208,321.792,256,245.333,256z"></path><path d="M115.904,300.971c-6.528-1.387-13.163-2.304-19.904-2.304c-52.928,0-96,43.072-96,96c0,5.888,4.779,10.667,10.667,10.667    h76.629c-1.195-3.349-1.963-6.912-1.963-10.667C85.333,359.659,96.768,327.339,115.904,300.971z"></path><path d="M394.667,298.667c-6.741,0-13.376,0.917-19.904,2.304c19.136,26.368,30.571,58.688,30.571,93.696    c0,3.755-0.768,7.317-1.963,10.667H480c5.888,0,10.667-4.779,10.667-10.667C490.667,341.739,447.595,298.667,394.667,298.667z"></path></svg><img></span>CHECK
-                </a>
-                <a href="https://nicepage.com/k/test-website-templates" class="u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-body-alt-color u-btn-2"><span class="u-icon u-icon-2"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M53.333,224C23.936,224,0,247.936,0,277.333V448c0,29.397,23.936,53.333,53.333,53.333h64 c12.011,0,23.061-4.053,32-10.795V224H53.333z"></path><path d="M512,304c0-12.821-5.077-24.768-13.888-33.579c9.963-10.901,15.04-25.515,13.653-40.725    c-2.496-27.115-26.923-48.363-55.637-48.363H324.352c6.528-19.819,16.981-56.149,16.981-85.333c0-46.272-39.317-85.333-64-85.333 c-22.165,0-37.995,12.48-38.677,12.992c-2.517,2.027-3.989,5.099-3.989,8.341v72.341l-61.44,133.099l-2.56,1.301v228.651    C188.032,475.584,210.005,480,224,480h195.819c23.232,0,43.563-15.659,48.341-37.269c2.453-11.115,1.024-22.315-3.861-32.043 c15.765-7.936,26.368-24.171,26.368-42.688c0-7.552-1.728-14.784-5.013-21.333C501.419,338.731,512,322.496,512,304z"></path></svg><img></span>&nbsp;APPROVE
-                </a>
+                <button type="button" id="reject" data-source={{r[1]}} value={{r[1]}} class="u-btn u-btn-round u-button-style u-gradient u-hover-palette-1-base u-none u-radius-50 u-text-body-alt-color u-text-hover-palette-3-base u-btn-1"><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><circle cx="245.333" cy="160" r="74.667"></circle><circle cx="394.667" cy="224" r="53.333"></circle><circle cx="97.515" cy="224" r="53.333"></circle><path d="M245.333,256c-76.459,0-138.667,62.208-138.667,138.667c0,5.888,4.779,10.667,10.667,10.667h256    c5.888,0,10.667-4.779,10.667-10.667C384,318.208,321.792,256,245.333,256z"></path><path d="M115.904,300.971c-6.528-1.387-13.163-2.304-19.904-2.304c-52.928,0-96,43.072-96,96c0,5.888,4.779,10.667,10.667,10.667    h76.629c-1.195-3.349-1.963-6.912-1.963-10.667C85.333,359.659,96.768,327.339,115.904,300.971z"></path><path d="M394.667,298.667c-6.741,0-13.376,0.917-19.904,2.304c19.136,26.368,30.571,58.688,30.571,93.696    c0,3.755-0.768,7.317-1.963,10.667H480c5.888,0,10.667-4.779,10.667-10.667C490.667,341.739,447.595,298.667,394.667,298.667z"></path></svg><img></span>REJECT
+                </button>
+                <button type="button" id="approve" data-source={{r[1]}} value={{r[1]}} class="u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-body-alt-color u-btn-2"><span class="u-icon u-icon-2"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M53.333,224C23.936,224,0,247.936,0,277.333V448c0,29.397,23.936,53.333,53.333,53.333h64 c12.011,0,23.061-4.053,32-10.795V224H53.333z"></path><path d="M512,304c0-12.821-5.077-24.768-13.888-33.579c9.963-10.901,15.04-25.515,13.653-40.725    c-2.496-27.115-26.923-48.363-55.637-48.363H324.352c6.528-19.819,16.981-56.149,16.981-85.333c0-46.272-39.317-85.333-64-85.333 c-22.165,0-37.995,12.48-38.677,12.992c-2.517,2.027-3.989,5.099-3.989,8.341v72.341l-61.44,133.099l-2.56,1.301v228.651    C188.032,475.584,210.005,480,224,480h195.819c23.232,0,43.563-15.659,48.341-37.269c2.453-11.115,1.024-22.315-3.861-32.043 c15.765-7.936,26.368-24.171,26.368-42.688c0-7.552-1.728-14.784-5.013-21.333C501.419,338.731,512,322.496,512,304z"></path></svg><img></span>&nbsp;APPROVE
+                </button>
               </div>
               
             </div>
@@ -119,10 +119,10 @@
                 <blockquote class="u-text u-text-2">{{c[0]}}&nbsp;</blockquote><!--blog_post_content-->
                 <div class="u-blog-control u-post-content u-text u-text-3"><!--blog_post_content_content-->{{c[1]}}<!--/blog_post_content_content--></div><!--/blog_post_content--><!--blog_post_header-->
                 <h2 class="u-blog-control u-text u-text-4">
-                  <a class="u-post-header-link" href="blog/karthik-b190531cs-1.html"><!--blog_post_header_content-->{{c[3]}} - {{c[2]}}<!--/blog_post_header_content--></a>
+                  <!--blog_post_header_content-->{{c[3]}} - {{c[2]}}<!--/blog_post_header_content-->
                 </h2><!--/blog_post_header-->
-                <a href="https://nicepage.com/k/test-website-templates" class="u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-body-alt-color u-btn-1"><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M53.333,224C23.936,224,0,247.936,0,277.333V448c0,29.397,23.936,53.333,53.333,53.333h64 c12.011,0,23.061-4.053,32-10.795V224H53.333z"></path><path d="M512,304c0-12.821-5.077-24.768-13.888-33.579c9.963-10.901,15.04-25.515,13.653-40.725    c-2.496-27.115-26.923-48.363-55.637-48.363H324.352c6.528-19.819,16.981-56.149,16.981-85.333c0-46.272-39.317-85.333-64-85.333 c-22.165,0-37.995,12.48-38.677,12.992c-2.517,2.027-3.989,5.099-3.989,8.341v72.341l-61.44,133.099l-2.56,1.301v228.651    C188.032,475.584,210.005,480,224,480h195.819c23.232,0,43.563-15.659,48.341-37.269c2.453-11.115,1.024-22.315-3.861-32.043 c15.765-7.936,26.368-24.171,26.368-42.688c0-7.552-1.728-14.784-5.013-21.333C501.419,338.731,512,322.496,512,304z"></path></svg><img></span>&nbsp;done
-                </a>
+                <button type="button" id="done" data-source={{c[4]}} value={{c[4]}} class="u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-body-alt-color u-btn-1"><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M53.333,224C23.936,224,0,247.936,0,277.333V448c0,29.397,23.936,53.333,53.333,53.333h64 c12.011,0,23.061-4.053,32-10.795V224H53.333z"></path><path d="M512,304c0-12.821-5.077-24.768-13.888-33.579c9.963-10.901,15.04-25.515,13.653-40.725    c-2.496-27.115-26.923-48.363-55.637-48.363H324.352c6.528-19.819,16.981-56.149,16.981-85.333c0-46.272-39.317-85.333-64-85.333 c-22.165,0-37.995,12.48-38.677,12.992c-2.517,2.027-3.989,5.099-3.989,8.341v72.341l-61.44,133.099l-2.56,1.301v228.651    C188.032,475.584,210.005,480,224,480h195.819c23.232,0,43.563-15.659,48.341-37.269c2.453-11.115,1.024-22.315-3.861-32.043 c15.765-7.936,26.368-24.171,26.368-42.688c0-7.552-1.728-14.784-5.013-21.333C501.419,338.731,512,322.496,512,304z"></path></svg><img></span>&nbsp;done
+                </button>
               </div>
             </div><!--/blog_post--><!--blog_post-->
             {% endfor %}
@@ -131,7 +131,7 @@
         </div><!--/blog-->
       </div>
     </section>
-    <section class="u-align-center u-clearfix u-section-4" id="sec-3ff3">
+    <!-- <section class="u-align-center u-clearfix u-section-4" id="sec-3ff3">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <h2 class="u-text u-text-default u-text-grey-70 u-text-1">Fetch details&nbsp;</h2>
         <div class="u-form u-form-1">
@@ -150,7 +150,7 @@
           </form>
         </div>
       </div>
-    </section>
+    </section> -->
     
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-4575"><div class="u-clearfix u-sheet u-sheet-1">
@@ -169,3 +169,9 @@
     </section>
   </body>
 </html>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"
+></script>
+<script src="{{ url_for('static',filename='request.js') }}" type="text/javascript"></script>

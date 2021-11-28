@@ -144,19 +144,70 @@ def admin():
         
     compliants = []
     cur.execute(
-        'select (Ctype,description,rid,hid) from complient where Ctype != %s', ("room",)
+        'select (Ctype,description,rid,hid,Cno) from complient where Ctype != %s', ("room",)
     )
     com = cur.fetchall()
     for c in com:
-        comp = [None,None,None,None]
-        Ctype,description,rid,hid = c[0].split(",")
+        comp = [None,None,None,None,None]
+        Ctype,description,rid,hid,cno = c[0].split(",")
         comp[0] = Ctype[2:-1]
         comp[1] = description[1:-1]
         comp[2] = rid
-        comp[3] = hid[:-1]
+        comp[3] = hid
+        comp[4] = cno[:-1]
         compliants.append(comp)
-    print(compliants)
+    cur.close()
     return render_template("admin.html",room_det=room_det,compliants=compliants)
 
+def allocate():
+    conn = db.get_db()
+    cur = conn.cursor()
+    cur.execute(
+        'select * from room',
+    )
+    room = cur.fetchall()
+    #print(room)
+    for r in room:
+        id,vacancy,capacity,hid = r
+        vacancy = int(vacancy)
+        capacity = int(capacity)
+        if vacancy:
+            cur.close()
+            return id
+    cur.close()
+    return False
     
+@auth.route("/reject/<user>", methods=["POST"])
+def reject(user):
+    conn = db.get_db()
+    cur = conn.cursor()
+    cur.execute("delete from complient where sid=%s and Ctype=%s",(user,"room",))
+    conn.commit()
+    cur.close()
+    return "REJECTED"
 
+@auth.route("/approve/<user>", methods=["POST"])
+def approve(user):
+    room = allocate()
+    if not room:
+        return False
+    conn = db.get_db()
+    cur = conn.cursor()
+    cur.execute("select vacancy from room where id=%s",(room,))
+    vac = cur.fetchall()
+    vac = vac[0][0] - 1
+    cur.execute("update room set vacancy=%s where id=%s",(vac,room,))
+    cur.execute("insert into resident(sid,rid) values (%s,%s)",(user,room,))
+    cur.execute("delete from complient where sid=%s and Ctype=%s",(user,"room",))
+    conn.commit()
+    cur.close()
+    return room
+
+@auth.route("/done/<cno>", methods=["POST"])
+def done(cno):
+    conn = db.get_db()
+    cur = conn.cursor()
+    cur.execute("delete from complient where Cno=%s",(cno,))
+    conn.commit()
+    cur.close()
+    return "complient done"
