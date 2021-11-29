@@ -18,6 +18,8 @@ Use flask initdb to initialize a database.Make sure to enter the Admin manually.
 ## How to run
    gunicorn --workers 5 main:app
 
+## Project Layout
+   ![Project Layout](https://github.com/AmbatiSathwik/flask/blob/main/Documentation/internal-readme.JPG)
 ## Documentation 
    Navigate to the Documentation folder for further details and user manual.Refer User manual for sample website images.
 
