@@ -6,19 +6,19 @@ import click
 from flask import current_app, g
 from flask.cli import with_appcontext
 
-user = "web"
-password = "123"
-host = "127.0.0.1"
+# user = "web"
+# password = "123"
+host = "ec2-3-95-130-249.compute-1.amazonaws.com"
 
 
 def get_db():
     if 'db' not in g:
-        # url = current_app.config['URL']
-        # dbname = url.path[1:]
-        # user = url.username
-        # password = url.password
+        url = current_app.config['URL']
+        dbname = url.path[1:]
+        user = url.username
+        password = url.password
         #host = url.
-        dbname = "hms"
+        # dbname = "hms"
         g.db = psycopg2.connect(dbname=dbname,
             user=user,
             password=password,

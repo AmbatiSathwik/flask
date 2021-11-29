@@ -4,6 +4,8 @@ from . import db
 import urllib.parse as urlparse
 import os
 
+URL =  urlparse.urlparse(os.environ['DATABASE_URL'])
+DEBUG = True
 SECRET_KEY = 'group28rocks'
 
 # TEMPLATE_DIR = os.path.abspath('templates')
