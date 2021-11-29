@@ -101,7 +101,7 @@ def user(user):
             conn = db.get_db()
             cur = conn.cursor()
             cur.execute(
-                'insert into complient(Ctype,description,sid) values (%s,%s,%s)', ("room",name,sid)
+                'insert into complient(Ctype,description,sid) values (%s,%s,%s)', ("room",name,user)
             )
             conn.commit()
             cur.close()
@@ -118,7 +118,7 @@ def user(user):
             conn = db.get_db()
             cur = conn.cursor()
             cur.execute(
-                'insert into complient(Ctype,description,sid,rid,hid) values (%s,%s,%s,%s,%s)', (typ,des,sid,rid,hid)
+                'insert into complient(Ctype,description,sid,rid,hid) values (%s,%s,%s,%s,%s)', (typ,des,user,rid,hid)
             )
             conn.commit()
             cur.close()
