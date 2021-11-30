@@ -150,7 +150,7 @@ def admin():
     for c in com:
         comp = [None,None,None,None,None]
         Ctype,description,rid,hid,cno = c[0].split(",")
-        comp[0] = Ctype[2:-1]
+        comp[0] = Ctype[1:]
         comp[1] = description[1:-1]
         comp[2] = rid
         comp[3] = hid
