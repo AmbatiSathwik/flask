@@ -3,7 +3,8 @@
 Live [here](https://nitc-hms.herokuapp.com/)
 
 Download the project folder and install the requirements provided below and connect it to the postgresql database.
-Use flask initdb to initialize a database.Make sure to enter the Admin manually. 
+Use flask initdb to initialize a database.Make sure to enter the Admin manually.
+
 
 ## Requirements
     click==8.0.3
